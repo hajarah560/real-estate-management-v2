@@ -1,0 +1,50 @@
+﻿{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard | Real Estate</title>
+  <link rel="stylesheet" href="{% static 'cooladmin/vendor/bootstrap-5.3.8.min.css' %}">
+  <link rel="stylesheet" href="{% static 'cooladmin/vendor/fontawesome-7.3.1/css/all.min.css' %}">
+  <link rel="stylesheet" href="{% static 'cooladmin/css/theme.css' %}">
+  <link rel="stylesheet" href="{% static 'cooladmin/css/app.css' %}">
+  <link rel="stylesheet" href="{% static 'cooladmin/realestate.css' %}">
+</head>
+<body>
+<div class="estate-layout">
+  <aside class="estate-sidebar">
+    <a class="estate-brand" href="{% url 'dashboard' %}"><span class="estate-mark"><i class="fa-solid fa-building" aria-hidden="true"></i></span><span>Real Estate<small>Management</small></span></a>
+    <nav aria-label="Main navigation">
+      <a class="active" href="{% url 'dashboard' %}" aria-current="page"><i class="fa-solid fa-gauge-high" aria-hidden="true"></i> Overview</a>
+      <span class="estate-nav-label">MANAGE RECORDS</span>
+      <a href="{% url 'client_page' %}"><i class="fa-solid fa-user-group" aria-hidden="true"></i> Clients</a>
+      <a href="{% url 'employee_page' %}"><i class="fa-solid fa-id-badge" aria-hidden="true"></i> Employees</a>
+      <a href="{% url 'land_page' %}"><i class="fa-solid fa-map" aria-hidden="true"></i> Land</a>
+      <a href="{% url 'building_page' %}"><i class="fa-solid fa-building" aria-hidden="true"></i> Buildings</a>
+      <a href="{% url 'lease_page' %}"><i class="fa-solid fa-file-contract" aria-hidden="true"></i> Leases</a>
+      <a href="{% url 'payment_page' %}"><i class="fa-solid fa-wallet" aria-hidden="true"></i> Payments</a>
+    </nav>
+  </aside>
+  <main class="estate-main">
+    <header class="estate-header"><div><h1>Welcome to the Real Estate Management System</h1><p>Keep important information about your properties and the people you work with in one place. Add new records and update existing details as your business grows.</p></div><a class="estate-action" href="{% url 'payment_page' %}"><i class="fa-solid fa-plus" aria-hidden="true"></i> Manage payments</a></header>
+    <section aria-labelledby="records-heading"><div class="estate-section-heading"><div><h2 id="records-heading">Your records</h2><p>A snapshot of your current portfolio.</p></div></div>
+      <div class="estate-stats">
+        <a class="estate-stat" href="{% url 'client_page' %}"><span>Clients</span><strong>{{ client_count }}</strong><small>View clients <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></small></a>
+        <a class="estate-stat" href="{% url 'employee_page' %}"><span>Employees</span><strong>{{ employee_count }}</strong><small>View employees <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></small></a>
+        <a class="estate-stat" href="{% url 'land_page' %}"><span>Land records</span><strong>{{ land_count }}</strong><small>View land <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></small></a>
+        <a class="estate-stat" href="{% url 'building_page' %}"><span>Buildings</span><strong>{{ building_count }}</strong><small>View buildings <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></small></a>
+        <a class="estate-stat" href="{% url 'lease_page' %}"><span>Leases</span><strong>{{ lease_count }}</strong><small>View leases <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></small></a>
+        <a class="estate-stat" href="{% url 'payment_page' %}"><span>Payments</span><strong>{{ payment_count }}</strong><small>View payments <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></small></a>
+      </div>
+    </section>
+    <section class="estate-panel" aria-labelledby="payments-heading"><div class="estate-panel-heading"><div><h2 id="payments-heading">Recent payments</h2><p>The latest payment records added to your account.</p></div><a href="{% url 'payment_page' %}">View all <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
+      <div class="table-responsive"><table class="table estate-table"><thead><tr><th scope="col">Record</th><th scope="col">Client</th><th scope="col">Employee</th><th scope="col">Amount</th><th scope="col">Method</th></tr></thead><tbody>
+      {% for payment in recent_payments %}<tr><td>#{{ payment.id }}</td><td>{{ payment.client.firstname }} {{ payment.client.lastname }}</td><td>{{ payment.employee.firstname }} {{ payment.employee.lastname }}</td><td>{{ payment.amount_paid }}</td><td>{{ payment.get_mode_of_payment_display }}</td></tr>{% empty %}<tr><td colspan="5" class="estate-empty">No payments yet. <a href="{% url 'payment_page' %}">Add a payment</a> to see it here.</td></tr>{% endfor %}
+      </tbody></table></div>
+    </section>
+    <footer>Dashboard design based on <a href="https://cooladmin.colorlib.com/">CoolAdmin by Colorlib</a>.</footer>
+  </main>
+</div>
+</body>
+</html>

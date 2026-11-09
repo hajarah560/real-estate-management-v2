@@ -1,0 +1,40 @@
+﻿:root { color-scheme: light; }
+body { margin: 0; background: #f4f6fa; color: #24324a; font-family: Arial, sans-serif; }
+a { text-decoration: none; }
+a:focus-visible { outline: 3px solid #2763cb; outline-offset: 3px; }
+.estate-layout { min-height: 100vh; display: flex; }
+.estate-sidebar { width: 245px; flex-shrink: 0; background: #fff; padding: 31px 20px; display: flex; flex-direction: column; border-right: 1px solid #e5eaf1; }
+.estate-brand { display: flex; gap: 12px; align-items: center; color: #17243c; font-size: 19px; font-weight: 700; margin: 0 0 45px 4px; }
+.estate-brand small { display: block; color: #6e7d90; font-size: 12px; font-weight: 400; }
+.estate-mark { display: grid; place-items: center; background: #416ed4; color: white; width: 42px; height: 42px; border-radius: 10px; }
+.estate-sidebar nav a { display: flex; align-items: center; gap: 14px; padding: 12px 14px; margin-bottom: 4px; color: #5a687c; border-radius: 8px; font-size: 14px; font-weight: 600; }
+.estate-sidebar nav a:hover, .estate-sidebar nav a.active { color: #285cc1; background: #edf3ff; }
+.estate-sidebar nav i { width: 18px; text-align: center; }
+.estate-nav-label { display: block; margin: 27px 14px 10px; font-size: 10px; font-weight: 700; letter-spacing: .08em; color: #78879a; }
+.estate-home { margin: auto 14px 0; padding-top: 40px; font-size: 13px; font-weight: 600; color: #385db0; }
+.estate-main { width: 100%; max-width: 1600px; padding: 48px clamp(24px, 5vw, 72px); }
+.estate-header, .estate-section-heading, .estate-panel-heading { display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+.estate-header { margin-bottom: 54px; }
+.estate-header h1 { font-size: 30px; font-weight: 700; margin: 0 0 8px; }
+.estate-header p, .estate-section-heading p, .estate-panel-heading p { color: #68788d; margin: 0; font-size: 14px; }
+.estate-action { background: #416ed4; color: white; border-radius: 8px; padding: 12px 16px; font-size: 14px; font-weight: 600; white-space: nowrap; }
+.estate-action:hover { background: #315bb9; color: white; }
+.estate-section-heading { margin-bottom: 20px; }
+.estate-section-heading h2, .estate-panel h2 { font-size: 19px; font-weight: 700; margin: 0 0 6px; }
+.estate-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.estate-stat { background: white; border-radius: 12px; padding: 22px 24px; color: #26344a; display: flex; flex-direction: column; box-shadow: 0 4px 20px rgba(38,57,87,.05); }
+.estate-stat:hover { color: #285cc1; box-shadow: 0 8px 24px rgba(38,57,87,.12); }
+.estate-stat span { font-size: 14px; color: #596a80; }
+.estate-stat strong { font-size: 32px; margin: 13px 0 22px; line-height: 1; font-variant-numeric: tabular-nums; }
+.estate-stat small { color: #315db5; font-weight: 600; font-size: 12px; }
+.estate-panel { background: #fff; border-radius: 12px; margin-top: 32px; box-shadow: 0 4px 20px rgba(38,57,87,.05); overflow: hidden; }
+.estate-panel-heading { padding: 26px 26px 20px; }
+.estate-panel-heading > a { white-space: nowrap; color: #315db5; font-size: 13px; font-weight: 600; }
+.estate-table { margin: 0; min-width: 600px; }
+.estate-table th { color: #617187; font-size: 12px; font-weight: 600; background: #f8f9fc; }
+.estate-table th, .estate-table td { padding: 15px 26px; border-color: #edf0f5; }
+.estate-table td { font-size: 14px; color: #38485e; }
+.estate-table .estate-empty { padding: 35px 26px; text-align: center; color: #68788d; }
+.estate-main footer { margin-top: 30px; color: #728095; font-size: 12px; }
+@media (max-width: 900px) { .estate-layout { display: block; } .estate-sidebar { width: 100%; padding: 18px 24px; } .estate-brand { margin-bottom: 18px; } .estate-sidebar nav { display: flex; flex-wrap: wrap; gap: 4px; } .estate-sidebar nav a { padding: 8px 10px; } .estate-nav-label, .estate-home { display: none; } .estate-main { padding-top: 32px; } }
+@media (max-width: 600px) { .estate-header { align-items: flex-start; flex-direction: column; margin-bottom: 36px; } .estate-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } .estate-stat { padding: 18px; } .estate-panel-heading { align-items: flex-start; } }
